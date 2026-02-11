@@ -1,0 +1,10 @@
+{
+  "name": "draw-io",
+  "description": "根据需求绘制架构图&流程图等示意图并导出PNG",
+  "version": "1.0.0",
+  "author": {
+    "name": "carol",
+    "email": "carol@deepshape.cn"
+  }
+}
+

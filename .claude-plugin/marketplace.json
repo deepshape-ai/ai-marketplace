@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "deepshape-marketplace",
+  "version": "1.0.0",
+  "tags": ["DEEPSHAPE", "分享", "公开"],
+  "description": "DEEPSHAPE AI技能库",
+  "owner": {
+    "name": "deepshape",
+    "email": "feedback@bilibili.com"
+  },
+  "plugins": [
+    {
+      "name": "draw-io",
+      "description": "根据需求绘制架构图&流程图等示意图并导出PNG",
+      "source": "./plugins/draw-io",
+      "category": "utilities",
+      "strict": false
+    }
+  ]
+}
+
