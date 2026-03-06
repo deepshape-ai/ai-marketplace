@@ -102,7 +102,7 @@ filter: "tag == 'API' && visibility == 'PUBLIC'"
 ```bash
 # Get recent public memos tagged with "API"
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?filter=tag%3D%3D'API'%20%26%26%20visibility%3D%3D'PUBLIC'&pageSize=20"
+  "https://your-memos-instance.com/api/v1/memos?filter=tag%3D%3D'API'%20%26%26%20visibility%3D%3D'PUBLIC'&pageSize=20"
 ```
 
 ### Get Memo
@@ -137,7 +137,7 @@ Retrieve a specific memo by ID.
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  https://memos.deepshape.cn/api/v1/memos/123
+  https://your-memos-instance.com/api/v1/memos/123
 ```
 
 ### Get Current User
@@ -166,7 +166,7 @@ Validate authentication token and get user info.
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  https://memos.deepshape.cn/api/v1/users/me
+  https://your-memos-instance.com/api/v1/users/me
 ```
 
 **Use this to validate token before searching memos.**
@@ -178,7 +178,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 ```bash
 # First page
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?pageSize=50"
+  "https://your-memos-instance.com/api/v1/memos?pageSize=50"
 
 # Response contains nextPageToken
 {
@@ -188,7 +188,7 @@ curl -H "Authorization: Bearer $TOKEN" \
 
 # Next page
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?pageSize=50&pageToken=abc123token"
+  "https://your-memos-instance.com/api/v1/memos?pageSize=50&pageToken=abc123token"
 ```
 
 ### Pagination Strategy
@@ -309,28 +309,28 @@ When errors occur, provide actionable guidance:
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?filter=tag%3D%3D'API'&pageSize=20"
+  "https://your-memos-instance.com/api/v1/memos?filter=tag%3D%3D'API'&pageSize=20"
 ```
 
 ### Search Multiple Tags
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?filter=tag%3D%3D'API'%20%7C%7C%20tag%3D%3D'design'&pageSize=20"
+  "https://your-memos-instance.com/api/v1/memos?filter=tag%3D%3D'API'%20%7C%7C%20tag%3D%3D'design'&pageSize=20"
 ```
 
 ### Get Pinned Memos
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?orderBy=pinned%20desc%2C%20display_time%20desc&pageSize=50"
+  "https://your-memos-instance.com/api/v1/memos?orderBy=pinned%20desc%2C%20display_time%20desc&pageSize=50"
 ```
 
 ### Get Private Memos
 
 ```bash
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?filter=visibility%3D%3D'PRIVATE'&pageSize=50"
+  "https://your-memos-instance.com/api/v1/memos?filter=visibility%3D%3D'PRIVATE'&pageSize=50"
 ```
 
 ### Get Recent Memos (Last 30 days)
@@ -340,7 +340,7 @@ Note: API doesn't support date filtering directly. Filter in code after fetching
 ```bash
 # Fetch recent memos
 curl -H "Authorization: Bearer $TOKEN" \
-  "https://memos.deepshape.cn/api/v1/memos?orderBy=display_time%20desc&pageSize=100"
+  "https://your-memos-instance.com/api/v1/memos?orderBy=display_time%20desc&pageSize=100"
 
 # Then filter by createTime in your code (last 30 days)
 ```

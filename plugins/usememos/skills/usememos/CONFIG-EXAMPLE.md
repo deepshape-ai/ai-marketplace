@@ -10,7 +10,7 @@
 
 ```json
 {
-  "site_url": "https://memos.deepshape.cn",
+  "site_url": "https://your-memos-instance.com",
   "api_token": "your-api-token-here",
   "created_at": "2024-01-15T10:30:00Z"
 }
@@ -22,7 +22,7 @@
 - Your usememos instance URL
 - Must include protocol (https://)
 - No trailing slash
-- Example: `https://memos.deepshape.cn`
+- Example: `https://your-memos-instance.com`
 
 ### api_token (required)
 - Generated from usememos Settings → API Tokens
@@ -67,7 +67,7 @@ To validate your configuration:
 ```bash
 # Test authentication
 curl -H "Authorization: Bearer YOUR_TOKEN" \
-  https://memos.deepshape.cn/api/v1/users/me
+  https://your-memos-instance.com/api/v1/users/me
 ```
 
 Expected response:

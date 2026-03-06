@@ -58,7 +58,7 @@ digraph workflow {
 ### Required Information
 
 **MUST collect before any API call:**
-1. **Site URL:** User's usememos instance (e.g., `https://memos.deepshape.cn`)
+1. **Site URL:** User's usememos instance (e.g., `https://your-memos-instance.com`)
 2. **API Token:** Generated from user's account settings
 
 **Never assume or skip configuration.** Even if user says "quickly" or "just find something", configuration is mandatory.
@@ -69,7 +69,7 @@ digraph workflow {
 
 ```json
 {
-  "site_url": "https://memos.deepshape.cn",
+  "site_url": "https://your-memos-instance.com",
   "api_token": "your-api-token-here",
   "created_at": "2024-01-15T10:30:00Z"
 }
