@@ -1,0 +1,9 @@
+{
+  "name": "usememos",
+  "description": "从usememos服务检索知识碎片，辅助开发和工作提效",
+  "version": "1.0.0",
+  "author": {
+    "name": "carol",
+    "email": "carol@deepshape.cn"
+  }
+}

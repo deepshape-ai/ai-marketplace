@@ -6,7 +6,7 @@
   "description": "DEEPSHAPE AI技能库",
   "owner": {
     "name": "deepshape",
-    "email": "feedback@bilibili.com"
+    "email": "dev@bilibili.com"
   },
   "plugins": [
     {
@@ -15,7 +15,15 @@
       "source": "./plugins/draw-io",
       "category": "utilities",
       "strict": false
+    },
+    {
+      "name": "usememos",
+      "description": "从usememos服务检索知识碎片，辅助开发和工作提效",
+      "source": "./plugins/usememos",
+      "category": "knowledge",
+      "version": "1.0.0",
+      "keywords": ["knowledge", "memo", "search"],
+      "strict": false
     }
   ]
 }
-
