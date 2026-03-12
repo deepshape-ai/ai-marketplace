@@ -1,0 +1,9 @@
+{
+  "name": "fragments",
+  "description": "Fragmented work logging and idea capture powered by Memos",
+  "version": "1.0.0",
+  "author": {
+    "name": "carol",
+    "email": "carol@deepshape.cn"
+  }
+}

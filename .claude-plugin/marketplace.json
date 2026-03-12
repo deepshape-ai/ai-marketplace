@@ -6,7 +6,7 @@
   "description": "DEEPSHAPE AI技能库",
   "owner": {
     "name": "deepshape",
-    "email": "dev@bilibili.com"
+    "email": "dev@deepshape.com"
   },
   "plugins": [
     {
@@ -23,6 +23,15 @@
       "category": "knowledge",
       "version": "1.0.0",
       "keywords": ["knowledge", "memo", "search"],
+      "strict": false
+    },
+    {
+      "name": "fragments",
+      "description": "Fragmented work logging and idea capture — memo + daily log + semantic search",
+      "source": "./plugins/fragments",
+      "category": "knowledge",
+      "version": "1.0.0",
+      "keywords": ["memo", "daily log", "fragments", "search", "memos", "log"],
       "strict": false
     }
   ]
