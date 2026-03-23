@@ -48,3 +48,111 @@ Before creating a new memo, run a quick search to avoid duplicates:
    - Update the existing memo?
    - Create a new one anyway?
 3. If no match, proceed with creation.
+
+---
+
+# Memo Lifecycle {#lifecycle}
+
+## Update Workflow
+
+Update an existing memo's content, visibility, or pin state.
+
+### Trigger
+
+User requests to modify, edit, or update a memo.
+Keywords: "update memo", "edit memo", "修改 memo", "更新".
+
+### Steps
+
+1. **Locate the memo:**
+   - If user provides memo ID/name: `memos_get_memo(name=...)`
+   - If user describes content: `memos_search_memos(query=...)`
+   - Show the matching memo(s) for confirmation.
+
+2. **Display current content:**
+   - Show the full memo content to the user.
+   - Highlight what will change.
+
+3. **Gather changes:**
+   - `content`: Updated markdown text (optional)
+   - `visibility`: PRIVATE | PROTECTED | PUBLIC (optional)
+   - `pinned`: true | false (optional)
+   - `state`: NORMAL | ARCHIVED (optional)
+
+4. **User confirmation:**
+   - Show a diff or summary of changes.
+   - Wait for explicit approval (e.g., "yes", "确认", "update it").
+
+5. **Execute:**
+   ```python
+   memos_update_memo(
+       name="memos/{uid}",
+       content=...,      # optional
+       visibility=...,   # optional
+       pinned=...,       # optional
+       state=...         # optional
+   )
+   ```
+
+6. **Report result:**
+   - Return the updated memo name.
+   - Confirm which fields were modified.
+
+### Example
+
+```
+User: "Update my memo about API design to add authentication section"
+
+1. Search: memos_search_memos(query="API design")
+2. Found: memos/abc123 "API Design Guidelines"
+3. Show current content
+4. User confirms the addition
+5. Call memos_update_memo(name="memos/abc123", content="...")
+6. Confirm: "Updated memos/abc123 with authentication section"
+```
+
+## Delete Workflow
+
+Permanently remove a memo. This operation is irreversible.
+
+### Trigger
+
+User requests to delete or remove a memo.
+Keywords: "delete memo", "remove memo", "删除 memo".
+
+### Steps
+
+1. **Locate the memo:**
+   - Same as update workflow — search or direct lookup.
+
+2. **Display full content:**
+   - Show the complete memo content.
+   - Warn: "This action cannot be undone."
+
+3. **Explicit confirmation:**
+   - Ask user to confirm with memo ID: "Type 'delete memos/{uid}' to confirm"
+   - Do NOT proceed without exact confirmation.
+
+4. **Execute:**
+   ```python
+   memos_delete_memo(name="memos/{uid}")
+   ```
+
+5. **Report result:**
+   - Confirm deletion with the memo's former title/ID.
+
+### Safety Checks
+
+- Always show full content before deletion.
+- Require explicit confirmation with memo ID.
+- If memo has comments, warn: "This memo has N comments which will also be deleted."
+
+## Archive Alternative
+
+For memos that might be needed later, suggest archiving instead of deleting:
+
+```python
+memos_update_memo(name="memos/{uid}", state="ARCHIVED")
+```
+
+Archived memos are hidden from default searches but remain accessible.

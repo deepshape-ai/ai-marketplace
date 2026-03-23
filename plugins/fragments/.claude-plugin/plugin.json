@@ -1,7 +1,7 @@
 {
   "name": "fragments",
-  "description": "Fragmented work logging and idea capture powered by Memos",
-  "version": "1.0.0",
+  "description": "Memos-powered memo lifecycle (create/search/update/delete/comment) + daily-log with passive hooks. Works with Claude Code and OpenCode.",
+  "version": "2.0.0",
   "author": {
     "name": "carol",
     "email": "carol@deepshape.cn"

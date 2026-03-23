@@ -2,12 +2,12 @@
 name: fragments
 description: >
   Fragmented work logging and idea capture powered by Memos.
-  Two modes: (1) memo — capture ideas, notes, code snippets on demand
-  with semantic search; (2) daily-log — structured daily work journal
-  in .plan format (* done, + todo, - note, ? question).
-  Passive trigger: after agent completes a task, prompt user to record
-  daily log. Active trigger: user says "memo", "note", "capture",
-  "daily log", "fragments", "记录", "笔记", "日志", "想法".
+  Full memo lifecycle: create, search, update, delete, and comment.
+  Daily-log: structured work journal in .plan format.
+  Passive trigger: after agent completes a task, prompt user to record.
+  Active trigger: user says "memo", "note", "capture", "daily log",
+  "fragments", "记录", "笔记", "日志", "想法", "评论", "comment",
+  "更新 memo", "删除 memo".
 ---
 
 # Fragments
@@ -27,13 +27,16 @@ description: >
 
 ## Modes
 
-### memo — Capture Ideas
+### memo — Full Lifecycle Management
 
-Create, search, and manage memos via MCP tools (auto-discovered).
+Create, search, update, delete, and comment on memos via MCP tools.
+
+**Workflows:**
+- Create & dedup → `references/memo-capture.md`
+- Update & delete → `references/memo-capture.md#lifecycle`
+- Comments → `references/memo-comments.md`
+
 Write operations require user confirmation before calling.
-
-Detailed workflow, content routing, and attachment handling:
-→ `references/memo-capture.md`
 
 ### daily-log — Daily Work Journal
 
@@ -66,6 +69,11 @@ Data volume can be large. Always prefer targeted retrieval over bulk listing.
 4. **Client-side rerank**: pipe search results through `scripts/fragments_search.py`
    for semantic ranking when server-side results need refinement.
 
+### Comments
+
+- **List comments**: `memos_list_memo_comments(name=...)` — retrieve all comments
+  on a memo. Comments inherit the parent memo's visibility.
+
 ### Daily Logs
 
 1. **Get by date**: `memos_get_daily_log(date=YYYY-MM-DD)` — single log lookup.
@@ -79,11 +87,24 @@ Data volume can be large. Always prefer targeted retrieval over bulk listing.
 
 No read operations require user confirmation.
 
-## Write Safety
+## Write Operations
 
-All MCP write operations (create, update, delete, save) require
-explicit user confirmation before calling. Read operations need
-no confirmation. Never echo PAT tokens to the conversation.
+All write operations require explicit user confirmation before calling.
+Read operations need no confirmation. Never echo PAT tokens to the conversation.
+
+### Memo Writes
+
+| Operation | MCP Tool | When to Use |
+|-----------|----------|-------------|
+| Create | `memos_create_memo` | New idea, note, snippet |
+| Update | `memos_update_memo` | Modify content, visibility, pin |
+| Delete | `memos_delete_memo` | Remove memo (irreversible) |
+| Add comment | `memos_create_memo_comment` | Append discussion to memo |
+
+### Daily Log Writes
+
+- `memos_save_daily_log(date=..., content=...)` — full replacement save.
+  Always include complete content (existing + new lines).
 
 ## Hook Workflow (Passive Trigger)
 
