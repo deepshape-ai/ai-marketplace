@@ -2,6 +2,12 @@
 
 Deepshape Agent 技能插件库。
 
+## 支持平台
+
+- Claude Code
+- OpenCode
+- OpenClaw
+
 ## 安装方式
 
 ### Claude Code Marketplace
@@ -21,14 +27,17 @@ cp -r ai-marketplace/plugins/<skill-name>/skills/<skill-name> ~/.config/opencode
 
 # Claude Code
 cp -r ai-marketplace/plugins/<skill-name>/skills/<skill-name> ~/.claude/skills/
+
+# OpenClaw
+cp -r ai-marketplace/plugins/<skill-name>/skills/<skill-name> ~/.openclaw/skills/
 ```
 
 ## 可用插件
 
-| 插件 | 版本 | 描述 |
-|------|------|------|
-| fragments | 2.0.0 | Memos 全生命周期管理 + Daily Log |
-| draw-io | 1.0.0 | 架构图绘制 |
+| 插件 | 版本 | 描述 | 支持平台 |
+|------|------|------|----------|
+| fragments | 1.0.0 | Memos 全生命周期管理 + Daily Log | Claude Code, OpenCode, OpenClaw |
+| draw-io | 1.0.0 | 架构图绘制 | Claude Code, OpenCode, OpenClaw |
 
 ## 前置要求
 

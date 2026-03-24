@@ -1,6 +1,12 @@
 ---
 name: draw-io
+version: 1.0.0
 description: 生成高质量 draw.io 图表（架构图、流程图、时序图等）并导出 PNG。通过直接编辑 XML 创建 .drawio 文件。当用户需要：(1) 创建架构图、流程图、决策图、时序图等示意图，(2) 生成 .drawio 或 draw.io XML 文件，(3) 将图表导出为 PNG 图片，(4) 修改或优化现有 draw.io 图表时使用。
+metadata:
+  openclaw:
+    requires:
+      bins:
+        - drawio
 ---
 
 # draw.io Diagram Generation

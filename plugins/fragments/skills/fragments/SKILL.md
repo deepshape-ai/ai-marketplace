@@ -1,5 +1,6 @@
 ---
 name: fragments
+version: 1.0.0
 description: >
   Fragmented work logging and idea capture powered by Memos.
   Full memo lifecycle: create, search, update, delete, and comment.
@@ -12,18 +13,25 @@ description: >
 
 # Fragments
 
-## Version Check
+## Setup Check
 
-1. Read `VERSION` file in this skill directory → SKILL_VERSION.
-2. Read `~/.config/fragments.json` (Windows: `%USERPROFILE%\.config\fragments.json`).
-3. Route:
-   - File missing → first install. Detect current platform, read the matching setup guide:
-     - Claude Code → `references/setup-claude-code.md`
-     - OpenCode → `references/setup-opencode.md`
-   - `version` < SKILL_VERSION → update needed. Read the setup guide's **Update** section.
-   - `version` == SKILL_VERSION → verify platform MCP and hooks are configured.
-     If incomplete → read the matching setup guide.
-   - All good → proceed to normal usage.
+1. Read `~/.config/fragments.json` (Windows: `%USERPROFILE%\.config\fragments.json`).
+2. If file missing → first install. Detect current platform, read the matching setup guide:
+   - Claude Code → `references/setup-claude-code.md`
+   - OpenCode → `references/setup-opencode.md`
+   - OpenClaw → `references/setup-openclaw.md`
+3. If file exists → verify MCP is configured. If incomplete → read the matching setup guide.
+4. All good → proceed to normal usage.
+
+## Platform Detection
+
+Detect the current platform by checking for platform-specific markers:
+
+| Platform | Detection Marker |
+|----------|------------------|
+| Claude Code | `~/.claude/` directory exists |
+| OpenCode | `~/.config/opencode/` directory exists |
+| OpenClaw | `~/.openclaw/` directory exists |
 
 ## Modes
 

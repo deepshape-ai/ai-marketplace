@@ -6,13 +6,13 @@ Communicate with the user in their current conversation language.
 Each step requires user confirmation before proceeding.
 Sensitive values (PAT token) are written to local config only, never echoed.
 
-## First Install
+## Setup Steps
 
 ### Step 1: Verify Memos Service
 
 Check reachability of the Memos server.
 
-- Read `~/.config/fragments.json` for an existing `site_url`, or ask the user.
+- Ask the user for their Memos instance URL.
 - Test connectivity: use Bash to run `curl -sf <site_url>/api/v1/status` (macOS/Linux)
   or `Invoke-WebRequest -Uri <site_url>/api/v1/status` (Windows PowerShell).
 - If unreachable, ask user to verify the URL and that the Memos server is running.
@@ -25,7 +25,6 @@ Write `~/.config/fragments.json`:
 
 ```json
 {
-  "version": "<SKILL_VERSION>",
   "pat_token": "<user_provided_token>",
   "site_url": "<confirmed_url>",
   "mcp_url": "<confirmed_url>/mcp"
@@ -50,7 +49,9 @@ OpenCode MCP config lives in one of:
 
 Prefer project-level config. Add a `memos` entry under `mcp` with `type: "remote"`.
 
-### Step 4: Install Plugin
+### Step 4: Install Plugin (Optional)
+
+For automatic daily-log prompting after sessions:
 
 Read `assets/opencode/plugin.ts` in this skill directory.
 
@@ -63,30 +64,6 @@ Prefer project-level. Create the directory if absent.
 ### Step 5: Verify
 
 Call `memos_list_tags` via MCP. Confirm success.
-
-### Step 6: Confirm Version
-
-Set `version` in `fragments.json` to SKILL_VERSION.
-
-## Update
-
-### Step 1: Re-read Asset Templates
-
-Read `assets/opencode/mcp.json` and `assets/opencode/plugin.ts`.
-
-### Step 2: Merge Config
-
-- Update MCP entry in OpenCode config.
-- Overwrite `fragments-hook.ts` with new version.
-- Preserve `pat_token`, `site_url`, `mcp_url` in `fragments.json`.
-
-### Step 3: Update Version
-
-Set `version` in `fragments.json` to SKILL_VERSION.
-
-### Step 4: Verify
-
-Call `memos_list_tags`. Confirm success.
 
 ## Platform Paths
 
